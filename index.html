@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>⚠️ Microsoft Security Alert</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        color: #fff;
+        position: relative;
+        user-select: none;
+    }
+
+    #alertBox {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        color: #000;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 25px red;
+        text-align: center;
+        width: 90%;
+        max-width: 400px;
+        z-index: 999;
+        animation: shake 0.5s infinite alternate;
+    }
+
+    @keyframes shake {
+        0% { transform: translate(-50%, -50%) rotate(-1deg); }
+        100% { transform: translate(-50%, -50%) rotate(1deg); }
+    }
+
+    .alert-title {
+        color: red;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .alert-message {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    #callNowBtn {
+        padding: 12px 25px;
+        background-color: red;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-size: 18px;
+        cursor: pointer;
+        margin-top: 10px;
+        animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+</style>
+</head>
+<body>
+
+<div id="alertBox">
+    <div class="alert-title">⚠️ Microsoft Security Alert</div>
+    <div class="alert-message">
+        Suspicious banking activity detected on this device.<br><br>
+        Unauthorized attempts to access your online banking account were blocked.<br><br>
+        Immediate action is required to prevent potential financial loss.<br><br>
+        Please contact your bank's security support now.
+    </div>
+    <button id="callNowBtn">Call Support</button>
+    <div style="margin-top: 10px; font-size: 14px; color: red;">☎ +1-833-534-5034</div>
+</div>
+
+<audio id="alertSound" loop>
+    <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
+</audio>
+
+<script>
+const alertBox = document.getElementById('alertBox');
+const audio = document.getElementById('alertSound');
+const callNowBtn = document.getElementById('callNowBtn');
+
+alertBox.addEventListener('click', () => {
+    triggerFullScreen();
+    audio.play();
+});
+
+callNowBtn.addEventListener('click', () => {
+    window.location.href = "tel:+18335345034";
+});
+
+function triggerFullScreen() {
+    const el = document.documentElement;
+    if (el.requestFullscreen) {
+        el.requestFullscreen();
+    } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+    } else if (el.msRequestFullscreen) {
+        el.msRequestFullscreen();
+    }
+}
+</script>
+
+</body>
+</html>
 
